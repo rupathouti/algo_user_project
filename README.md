@@ -4,6 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `node server.js`
+
+Runs the app in the development mode.<br> REST API for User
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
