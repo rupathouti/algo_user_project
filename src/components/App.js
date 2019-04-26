@@ -14,6 +14,11 @@ class App extends Component{
       }
 
       componentDidMount(){
+       this.getAllUsers();
+
+      }
+    
+      getAllUsers = () => {
         axios.get('http://localhost:8081/api/users')
         .then(response => {
             console.log(response.data);
@@ -22,18 +27,28 @@ class App extends Component{
         .catch(function (error) {
           console.log(error);
         })
-
       }
-    
-    
+
+      
     
    
       // (newUser) is received from AddUser.js
       addUser = (newUser) => {
-            let users = [...this.state.users, newUser];
-            this.setState({
-                users : users
-            });     
+            //let users = [...this.state.users, newUser]; // this will add newUser to this.state.users and return array.
+           
+
+            axios.post(`http://localhost:8081/api/users`, { name:newUser.name,
+            email_id:newUser.email_id })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+              this.getAllUsers();
+            })
+            .catch(function (error) {
+                console.log(error);
+              })
+
+   
       }
 
 

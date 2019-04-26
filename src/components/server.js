@@ -1,7 +1,9 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
-app.use(cors());
+app.use(cors()); //https://medium.com/@alexishevia/using-cors-in-express-cac7e29b005b
+
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
