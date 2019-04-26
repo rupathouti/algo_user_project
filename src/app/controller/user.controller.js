@@ -1,8 +1,11 @@
-const db = require('f:/Rupa/UserRestAPI/project/src/components/app/config/db.config');
+const db = require('../config/db.config');
 const Users = db.users;
  
 // Post a Customer
 exports.create = (req, res) => {  
+  console.log(req);
+  console.log(res);
+
   // Save to MySQL database
   Users.create({  
     name: req.body.name,

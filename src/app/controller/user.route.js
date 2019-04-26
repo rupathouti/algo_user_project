@@ -1,6 +1,6 @@
 module.exports = function(app) {
  
-    const users = require('f:/Rupa/UserRestAPI/project/src/components/app/controller/user.controller');
+    const users = require('./user.controller');
  
     // Create a new User
     app.post('/api/users', users.create);

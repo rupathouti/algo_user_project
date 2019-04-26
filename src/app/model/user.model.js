@@ -14,22 +14,4 @@ module.exports = (sequelize, Sequelize) => {
     });
     
     return Users;
-  
-
-  const User_details = sequelize.define('user_details', {
-    id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-    },
-    name: {
-    type: Sequelize.STRING
-    },
-    email_id: {
-    type: Sequelize.STRING
-    }
-  });
-  
-  return User_details;
-}
-}
+  }

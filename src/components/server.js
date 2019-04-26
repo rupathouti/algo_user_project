@@ -3,20 +3,20 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
  
-const db = require('f:/Rupa/React/project/src/components/app/config/db.config');
+const db = require('../app/config/db.config');
   
 // force: true will drop the table if it already exists
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync with { force: true }');
+db.sequelize.sync({force: false}).then(() => {
+  console.log('Drop and Resync with { force: false }');
 });
  
-require('f:/Rupa/React/project/src/components/app/controller/user.route')(app);
- 
+require('../app/controller/user.route')(app);
+
 // Create a Server
 var server = app.listen(8081, function () {
  
-  var host = server.address().address
+  
   var port = server.address().port
  
-  console.log("App listening at http://%s:%s", host, port)
+  console.log("App listening at http://localhost:%s",  port)
 })
