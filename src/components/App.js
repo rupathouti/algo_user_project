@@ -83,12 +83,15 @@ class App extends Component{
       // (i) is received from Users.js
       
       pressDelete = (i) => {
-        let users = this.state.users.filter((u,index)=>{
-            return index !== i;
-        });
-        this.setState({
-            users
-        });
+        axios.delete('http://localhost:8081/api/users/' + i)
+        .then(res => {
+          console.log(res);
+          this.getAllUsers();
+        })
+        .catch(function (error) {
+            console.log(error);
+          })
+
       }
 
     render(){
