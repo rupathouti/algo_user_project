@@ -23,6 +23,7 @@ class App extends Component{
         .then(response => {
             console.log(response.data);
             this.setState({ users: response.data });
+            
         })
         .catch(function (error) {
           console.log(error);
@@ -55,9 +56,11 @@ class App extends Component{
 
       // when press edit button
       // (i) is received from Users.js
-      pressEditBtn = (i) => {
+      pressEditBtn = (index) => {
         let users = this.state.users;
-        users[i].isEditing = true;
+        //users[i].isEditing = true;
+        users.forEach((user)=> { user.id === index ? user.isEditing = true : user = user });
+
         this.setState({
             users : users
         });
@@ -65,14 +68,16 @@ class App extends Component{
 
       // (i, name, email_id) is received from Users.js
       updateUser = (i, name, email_id) => {
-        let users = this.state.users;
-        users[i].name = name;
-        users[i].email_id= email_id;
-        users[i].isEditing = false;
-
-        this.setState({
-            users : users
-        });
+        
+        axios.put('http://localhost:8081/api/users/' + i, { name:name,
+        email_id:email_id })
+        .then(res => {
+          console.log(res);
+          this.getAllUsers();
+        })
+        .catch(function (error) {
+            console.log(error);
+          })
 
       }
       // (i) is received from Users.js
