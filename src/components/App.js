@@ -3,19 +3,40 @@ import Users from './Users';
 import AddUser from './AddUser';
 import axios from 'axios';
 
+
 class App extends Component{
 
-    // Default dummy data
-    state = {
-        users:[]
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: []
+        };
       }
+
+      componentDidMount(){
+        axios.get('http://localhost:8081/api/users')
+        .then(response => {
+            console.log(response.data);
+            this.setState({ users: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
+      }
+    
+    
+    
+   
       // (newUser) is received from AddUser.js
       addUser = (newUser) => {
             let users = [...this.state.users, newUser];
             this.setState({
-                users
+                users : users
             });     
       }
+
+
 
       // when press edit button
       // (i) is received from Users.js
@@ -23,7 +44,7 @@ class App extends Component{
         let users = this.state.users;
         users[i].isEditing = true;
         this.setState({
-            users
+            users : users
         });
       }
 
@@ -35,7 +56,7 @@ class App extends Component{
         users[i].isEditing = false;
 
         this.setState({
-            users
+            users : users
         });
 
       }

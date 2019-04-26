@@ -1,7 +1,10 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
+app.use(cors());
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
+
  
 const db = require('../app/config/db.config');
   
@@ -11,6 +14,10 @@ db.sequelize.sync({force: false}).then(() => {
 });
  
 require('../app/controller/user.route')(app);
+
+
+
+
 
 // Create a Server
 var server = app.listen(8081, function () {
