@@ -18,7 +18,7 @@ db.sequelize.sync({force: false}).then(() => {
 require('../app/controller/user.route')(app);
 
 
-
+require('../app/controller/user_details.route')(app);
 
 
 // Create a Server

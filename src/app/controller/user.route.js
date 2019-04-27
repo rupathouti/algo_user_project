@@ -9,7 +9,7 @@ module.exports = function(app) {
     app.get('/api/users', users.findAll);
  
     // Retrieve a single users by Id
-    app.get('/api/users/:id', users.findById);
+    // app.get('/api/users/:id', users.findById);
  
     // Update a users with Id
     app.put('/api/users/:id', users.update);

@@ -30,8 +30,6 @@ class App extends Component{
         })
       }
 
-      
-    
    
       // (newUser) is received from AddUser.js
       addUser = (newUser) => {
@@ -51,8 +49,6 @@ class App extends Component{
 
    
       }
-
-
 
       // when press edit button
       // (i) is received from Users.js

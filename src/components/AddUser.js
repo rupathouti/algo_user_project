@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import axios from 'axios';
 
 class AddUser extends Component{
 
@@ -23,21 +22,47 @@ class AddUser extends Component{
         });
     }
 
+
+    validate = () =>{
+        let nameError="";
+         let emailError="";  
+         
+         if(!this.state.name){
+           nameError='name cannot be blank';
+         }
+     
+     
+         if(!this.state.email_id.includes('@')) {
+           emailError='Invalid Error';
+         } 
+         if(emailError||nameError){
+          this.setState({emailError,nameError}); 
+          return false;
+         } 
+         return true;
+        }
+
+        
     render(){
         return(
             <div className="row">
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field col s4">
                         <input name="name" autoComplete="off" placeholder="Enter your name" required type="text" onChange={ this.updateState} />
-                    </div>
+                        <div style={{ fontSize: 18, color: "red"}}>
+                    {this.state.nameError}
+                   </div> 
+                        </div>
                     <div className="input-field col s2">
-                        <input name="email_id" autoComplete="off" type="text" required placeholder="Enter your email_id" onChange={ this.updateState } />
-                    </div>
+                        <input name="email_id" autoComplete="off" type="email" required placeholder="Enter your email_id" onChange={ this.updateState } />
+                        <div style={{ fontSize: 18, color: "red"}}>
+                        {this.state.emailError}
+                       </div>
+                        </div>
                     <div className="input-field col s2">
-                        <input type="submit" value="Add +" className="btn blue"/>
+                        <input type="submit" value="Add +" className="blue"/>
                     </div>
 
-                    
                 </form>
                 
             </div>
